@@ -9,6 +9,7 @@ import {
   Dimensions,
   SafeAreaView,
   TextInput,
+  Alert,
 } from "react-native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { LinearGradient } from "expo-linear-gradient";
@@ -26,11 +27,38 @@ export default class Intro extends Component {
     this.handleChange_email = this.handleChange_email.bind(this);
   }
 
+  async componentDidMount() {
+    this.focusListener = this.props.navigation.addListener(
+      "focus",
+      async () => {
+        const data = firebase.firestore();
+        const increment_opt1 = firebase.firestore.FieldValue.increment(1);
+        data
+          .collection("users")
+          .doc("mvp")
+          .update({ until_final: increment_opt1 });
+      }
+    );
+  }
+
   OnInsertPress() {
     const data = firebase.firestore();
     data.collection("users").doc(this.state.uid2).update({
       email: this.state.email,
     });
+    Alert.alert(
+      "제출되었습니다!",
+      "감사합니다.",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        { text: "OK", onPress: () => console.log("OK Pressed") },
+      ],
+      { cancelable: false }
+    );
   }
   handleChange_email(newText) {
     this.setState({
@@ -159,8 +187,8 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: "gray",
     backgroundColor: "#113f67",
-    width: 200,
-    height: 50,
+    width: 250,
+    height: 60,
     alignSelf: "center",
     marginTop: 40,
     marginHorizontal: 40,

@@ -22,6 +22,19 @@ export default class Intro extends Component {
     disagree: false,
     uid: "",
   };
+  async componentDidMount() {
+    this.focusListener = this.props.navigation.addListener(
+      "focus",
+      async () => {
+        const data = firebase.firestore();
+        const increment_opt1 = firebase.firestore.FieldValue.increment(1);
+        data
+          .collection("users")
+          .doc("mvp")
+          .update({ everyone: increment_opt1 });
+      }
+    );
+  }
 
   OnInsertPress() {
     const data = firebase.firestore();

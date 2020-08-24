@@ -26,6 +26,21 @@ export default class Third extends Component {
     this.handleChange_weight = this.handleChange_weight.bind(this);
     this.handleChange_age = this.handleChange_age.bind(this);
   }
+
+  async componentDidMount() {
+    this.focusListener = this.props.navigation.addListener(
+      "focus",
+      async () => {
+        const data = firebase.firestore();
+        const increment_opt1 = firebase.firestore.FieldValue.increment(1);
+        data
+          .collection("users")
+          .doc("mvp")
+          .update({ until_third: increment_opt1 });
+      }
+    );
+  }
+
   handleChange_gender(newText) {
     this.setState({
       gender: newText,

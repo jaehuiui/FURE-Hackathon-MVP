@@ -23,6 +23,9 @@ export default class Intro extends Component {
     uid2: this.props.route.params.uid,
     height: "",
     weight: "",
+    count1: 0,
+    count2: 0,
+    count3: 0,
     count: 0,
     height1: "",
     height2: "",
@@ -35,6 +38,7 @@ export default class Intro extends Component {
       "focus",
       async () => {
         const data = firebase.firestore();
+        const increment_opt1 = firebase.firestore.FieldValue.increment(1);
         data
           .collection("users")
           .doc(this.state.uid2)
@@ -50,46 +54,92 @@ export default class Intro extends Component {
               weight2: parseInt(weight_r) + 3,
             });
           });
+        data
+          .collection("users")
+          .doc("mvp")
+          .update({ until_fourth: increment_opt1 });
       }
     );
   }
 
-  OnInsertPress() {
+  OnPressResult1() {
     const data = firebase.firestore();
-
-    if (this.state.agree) {
-      data
-        .collection("users")
-        .doc(this.state.uid2)
-        .update({
-          question2_agree: this.state.agree,
-        })
-        .then(() => {
-          this.props.navigation.navigate("Final", { uid: this.state.uid2 });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
+    this.setState({
+      count1: this.state.count1 + 1,
+      count: this.state.count + 1,
+    });
+    data.collection("users").doc(this.state.uid2).update({
+      option1_click: this.state.count1,
+    });
+    const increment_opt1 = firebase.firestore.FieldValue.increment(
+      this.state.count1
+    );
+    const increment_opt2 = firebase.firestore.FieldValue.increment(
+      this.state.count
+    );
+    data
+      .collection("users")
+      .doc("mvp")
+      .update({ total_option1: increment_opt1 });
+    if (this.state.count > 4) {
       data
         .collection("users")
         .doc("mvp")
-        .update({
-          question2_dis: !this.state.agree,
-        })
-        .then(() => {
-          this.props.navigation.navigate("Final", { uid: this.state.uid2 });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        .update({ total_count: increment_opt2 });
+      this.props.navigation.navigate("Final", { uid: this.state.uid2 });
     }
   }
-  OnPressResult() {
+  OnPressResult2() {
+    const data = firebase.firestore();
     this.setState({
+      count2: this.state.count2 + 1,
       count: this.state.count + 1,
     });
+    data.collection("users").doc(this.state.uid2).update({
+      option2_click: this.state.count2,
+    });
+    const increment_opt1 = firebase.firestore.FieldValue.increment(
+      this.state.count2
+    );
+    const increment_opt2 = firebase.firestore.FieldValue.increment(
+      this.state.count
+    );
+    data
+      .collection("users")
+      .doc("mvp")
+      .update({ total_option2: increment_opt1 });
     if (this.state.count > 4) {
+      data
+        .collection("users")
+        .doc("mvp")
+        .update({ total_count: increment_opt2 });
+      this.props.navigation.navigate("Final", { uid: this.state.uid2 });
+    }
+  }
+  OnPressResult3() {
+    const data = firebase.firestore();
+    this.setState({
+      count3: this.state.count3 + 1,
+      count: this.state.count + 1,
+    });
+    data.collection("users").doc(this.state.uid2).update({
+      option3_click: this.state.count3,
+    });
+    const increment_opt1 = firebase.firestore.FieldValue.increment(
+      this.state.count3
+    );
+    const increment_opt2 = firebase.firestore.FieldValue.increment(
+      this.state.count
+    );
+    data
+      .collection("users")
+      .doc("mvp")
+      .update({ total_option3: increment_opt1 });
+    if (this.state.count > 4) {
+      data
+        .collection("users")
+        .doc("mvp")
+        .update({ total_count: increment_opt2 });
       this.props.navigation.navigate("Final", { uid: this.state.uid2 });
     }
   }
@@ -115,7 +165,7 @@ export default class Intro extends Component {
             </Text>
             <TouchableOpacity
               onPress={() => {
-                this.OnInsertPress();
+                this.OnPressResult1();
               }}
             >
               <View style={styles.signin_button}>
@@ -130,7 +180,7 @@ export default class Intro extends Component {
             </Text>
             <TouchableOpacity
               onPress={() => {
-                this.OnInsertPress();
+                this.OnPressResult2();
               }}
             >
               <View style={styles.signin_button}>
@@ -145,7 +195,7 @@ export default class Intro extends Component {
             </Text>
             <TouchableOpacity
               onPress={() => {
-                this.OnInsertPress();
+                this.OnPressResult3();
               }}
             >
               <View style={styles.signin_button}>
