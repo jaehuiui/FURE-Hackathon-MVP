@@ -18,7 +18,7 @@ import "firebase/firestore";
 export default class Intro extends Component {
   state = {
     checked: false,
-    agree: false,
+    agree: true,
     disagree: false,
     uid2: this.props.route.params.uid,
   };
@@ -60,24 +60,26 @@ export default class Intro extends Component {
     return (
       <LinearGradient
         start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 0.25 }}
-        colors={["#bbe1fa", "white"]}
+        end={{ x: 0, y: 1 }}
+        colors={["#87c0cd", "#f3f9fb"]}
         style={styles.container}
       >
         <View style={styles.top_layer_1}>
           <Text style={styles.question}>
-            당신과 비슷한 체형이였던 사람이 어떻게 러닝으로 체중 감량을 하였는지
-            루틴이 궁금하세요?
+            당신과 비슷한 체형이였던 사람이 {"\n"}어떻게 러닝으로 체중 감량을
+            하였는지 {"\n"}루틴이 궁금하신가요?
           </Text>
         </View>
         <View style={styles.middle_layer_1}>
           <CheckBox
             title="예"
+            checkedColor="#226597"
             checked={this.state.agree}
             onPress={() => this.setState({ agree: !this.state.agree })}
           />
           <CheckBox
             title="아니요"
+            checkedColor="#226597"
             checked={!this.state.agree}
             onPress={() => this.setState({ agree: !this.state.agree })}
           />
@@ -88,14 +90,9 @@ export default class Intro extends Component {
               this.OnInsertPress();
             }}
           >
-            <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              colors={["#f5f7fa", "#c3cfe2"]}
-              style={styles.signin_button}
-            >
+            <View style={styles.signin_button}>
               <Text style={styles.signin}>다음</Text>
-            </LinearGradient>
+            </View>
           </TouchableOpacity>
         </View>
       </LinearGradient>
@@ -125,8 +122,9 @@ const styles = StyleSheet.create({
 
   question: {
     textAlign: "center",
-    fontSize: RFValue(30, 812),
+    fontSize: RFValue(25, 812),
     fontWeight: "bold",
+    lineHeight: 35,
   },
   answer: {
     textAlign: "center",
@@ -161,6 +159,7 @@ const styles = StyleSheet.create({
   signin_button: {
     borderWidth: 0.5,
     borderColor: "gray",
+    backgroundColor: "#113f67",
     width: 200,
     height: 50,
     alignSelf: "center",

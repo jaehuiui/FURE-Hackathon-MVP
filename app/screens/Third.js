@@ -70,13 +70,13 @@ export default class Third extends Component {
     return (
       <LinearGradient
         start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 0.25 }}
-        colors={["#bbe1fa", "white"]}
+        end={{ x: 0, y: 1 }}
+        colors={["#87c0cd", "#f3f9fb"]}
         style={styles.container}
       >
         <View style={styles.top_layer_1}>
           <Text style={styles.question2}>
-            키와 몸무게, 성별과 나이를 입력해주세요.
+            신장과 체중, 성별과 나이를 입력해주세요.{"\n"}
           </Text>
         </View>
         <View style={styles.middle_layer_1}>
@@ -84,7 +84,7 @@ export default class Third extends Component {
             <Text style={styles.question}>성별 : </Text>
             <TextInput
               style={styles.inputbox}
-              placeholder="남자 / 여자"
+              placeholder="여자/남자"
               onChangeText={this.handleChange_gender}
             ></TextInput>
           </View>
@@ -92,15 +92,15 @@ export default class Third extends Component {
             <Text style={styles.question}>신장 : </Text>
             <TextInput
               style={styles.inputbox}
-              placeholder="178cm"
+              placeholder="ex)165"
               onChangeText={this.handleChange_height}
             ></TextInput>
           </View>
           <View style={styles.inputinfo}>
-            <Text style={styles.question}>몸무게 : </Text>
+            <Text style={styles.question}>체중 : </Text>
             <TextInput
               style={styles.inputbox}
-              placeholder="70kg"
+              placeholder="ex)50"
               onChangeText={this.handleChange_weight}
             ></TextInput>
           </View>
@@ -108,7 +108,7 @@ export default class Third extends Component {
             <Text style={styles.question}>나이 : </Text>
             <TextInput
               style={styles.inputbox}
-              placeholder="24"
+              placeholder="ex)24"
               onChangeText={this.handleChange_age}
             ></TextInput>
           </View>
@@ -119,28 +119,9 @@ export default class Third extends Component {
               this.OnInsertPress();
             }}
           >
-            <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              colors={["#f5f7fa", "#c3cfe2"]}
-              style={styles.signin_button}
-            >
+            <View style={styles.signin_button}>
               <Text style={styles.signin}>다음</Text>
-            </LinearGradient>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              this.props.navigation.navigate("Second");
-            }}
-          >
-            <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              colors={["#f5f7fa", "#c3cfe2"]}
-              style={styles.signin_button}
-            >
-              <Text style={styles.signin}>뒤로</Text>
-            </LinearGradient>
+            </View>
           </TouchableOpacity>
         </View>
       </LinearGradient>
@@ -169,15 +150,17 @@ const styles = StyleSheet.create({
 
   question2: {
     textAlign: "center",
-    fontSize: RFValue(30, 812),
+    fontSize: RFValue(25, 812),
     fontWeight: "bold",
+    marginBottom: RFValue(30, 812),
   },
   answer: {
     textAlign: "center",
     fontSize: RFValue(20, 812),
   },
   inputinfo: {
-    marginVertical: RFValue(20, 812),
+    marginBottom: RFValue(20, 812),
+    marginTop: RFValue(10, 812),
     flexDirection: "row",
     justifyContent: "center",
   },
@@ -225,10 +208,11 @@ const styles = StyleSheet.create({
   signin_button: {
     borderWidth: 0.5,
     borderColor: "gray",
+    backgroundColor: "#113f67",
     width: 200,
     height: 50,
     alignSelf: "center",
-    marginTop: 15,
+    marginTop: 80,
     marginHorizontal: 40,
     marginBottom: 30,
     borderRadius: 25,

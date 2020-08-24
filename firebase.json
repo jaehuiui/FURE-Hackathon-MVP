@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "web-build",
+    "site": "fure-how-to-run",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {

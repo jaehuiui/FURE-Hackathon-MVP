@@ -98,74 +98,59 @@ export default class Intro extends Component {
     return (
       <LinearGradient
         start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 0.25 }}
-        colors={["#bbe1fa", "white"]}
+        end={{ x: 0, y: 1 }}
+        colors={["#87c0cd", "#f3f9fb"]}
         style={styles.container}
       >
         <View style={styles.top_layer_1}>
           <Text style={styles.question}>
-            당신과 비슷했던 사람 중 3명이 체중감량에 성공했어요.
+            당신과 비슷했던 사람들 중 {"\n"}3명이 체중감량에 성공했어요!
           </Text>
         </View>
         <View style={styles.middle_layer_1}>
           <View style={styles.resultbox}>
             <Text style={styles.result}>
-              {this.state.height}cm, {this.state.weight2}kg 정__님의 2.8kg 감량
-              루틴
+              {this.state.height}cm, {this.state.weight2}kg{"\n"} 엘사 님의
+              2.8kg 감량 루틴
             </Text>
             <TouchableOpacity
               onPress={() => {
-                this.OnPressResult();
+                this.OnInsertPress();
               }}
             >
-              <LinearGradient
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                colors={["#f5f7fa", "#c3cfe2"]}
-                style={styles.signin_button}
-              >
+              <View style={styles.signin_button}>
                 <Text style={styles.signin}>확인하기</Text>
-              </LinearGradient>
+              </View>
             </TouchableOpacity>
           </View>
           <View style={styles.resultbox}>
             <Text style={styles.result}>
-              {this.state.height2}cm, {this.state.weight}kg 김__님의 4.7kg 감량
-              루틴
+              {this.state.height2}cm, {this.state.weight}kg{"\n"} 안나 님의
+              4.7kg 감량 루틴
             </Text>
             <TouchableOpacity
               onPress={() => {
-                this.OnPressResult();
+                this.OnInsertPress();
               }}
             >
-              <LinearGradient
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                colors={["#f5f7fa", "#c3cfe2"]}
-                style={styles.signin_button}
-              >
+              <View style={styles.signin_button}>
                 <Text style={styles.signin}>확인하기</Text>
-              </LinearGradient>
+              </View>
             </TouchableOpacity>
           </View>
           <View style={styles.resultbox}>
             <Text style={styles.result}>
-              {this.state.height1}cm, {this.state.weight1}kg 이__님의 5.9kg 감량
-              루틴
+              {this.state.height1}cm, {this.state.weight1}kg{"\n"} 올라프 님의
+              5.9kg 감량 루틴
             </Text>
             <TouchableOpacity
               onPress={() => {
-                this.OnPressResult();
+                this.OnInsertPress();
               }}
             >
-              <LinearGradient
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                colors={["#f5f7fa", "#c3cfe2"]}
-                style={styles.signin_button}
-              >
+              <View style={styles.signin_button}>
                 <Text style={styles.signin}>확인하기</Text>
-              </LinearGradient>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -192,8 +177,9 @@ const styles = StyleSheet.create({
 
   question: {
     textAlign: "center",
-    fontSize: RFValue(30, 812),
+    fontSize: RFValue(25, 812),
     fontWeight: "bold",
+    lineHeight: 35,
   },
   answer: {
     textAlign: "center",
@@ -201,17 +187,18 @@ const styles = StyleSheet.create({
   },
   resultbox: {
     flex: 1,
-    flexDirection: "row",
     textAlign: "center",
     justifyContent: "center",
     alignContent: "center",
     alignSelf: "center",
     borderWidth: 1,
     width: "80%",
+    borderColor: "gray",
   },
 
   result: {
     fontSize: 20,
+    textAlign: "center",
   },
 
   //Inner Layer 1
@@ -234,7 +221,7 @@ const styles = StyleSheet.create({
   },
 
   signin: {
-    fontSize: 20,
+    fontSize: 15,
     color: "white",
     textAlign: "center",
   },
@@ -242,6 +229,7 @@ const styles = StyleSheet.create({
   signin_button: {
     borderWidth: 0.5,
     borderColor: "gray",
+    backgroundColor: "#113f67",
     width: 100,
     height: 30,
     alignSelf: "center",
