@@ -46,19 +46,7 @@ export default class Intro extends Component {
     data.collection("users").doc(this.state.uid2).update({
       email: this.state.email,
     });
-    Alert.alert(
-      "제출되었습니다!",
-      "감사합니다.",
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel",
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") },
-      ],
-      { cancelable: false }
-    );
+    this.props.navigation.navigate("Real");
   }
   handleChange_email(newText) {
     this.setState({
@@ -98,7 +86,7 @@ export default class Intro extends Component {
             }}
           >
             <View style={styles.signin_button}>
-              <Text style={styles.signin}>제출</Text>
+              <Text style={styles.signin}>동의 및 제출</Text>
             </View>
           </TouchableOpacity>
         </View>

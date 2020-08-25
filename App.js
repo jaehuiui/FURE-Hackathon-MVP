@@ -12,6 +12,7 @@ import Second from "./app/screens/Second";
 import Third from "./app/screens/Third";
 import Fourth from "./app/screens/Fourth";
 import Final from "./app/screens/Final";
+import Real from "./app/screens/Real";
 
 firebase.initializeApp(firebaseConfig);
 
@@ -30,6 +31,7 @@ function App() {
         <Stack.Screen name="Third" component={Third} />
         <Stack.Screen name="Fourth" component={Fourth} />
         <Stack.Screen name="Final" component={Final} />
+        <Stack.Screen name="Real" component={Real} />
       </Stack.Navigator>
     </NavigationContainer>
   );
