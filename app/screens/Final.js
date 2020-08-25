@@ -64,8 +64,8 @@ export default class Intro extends Component {
       >
         <View style={styles.top_layer_1}>
           <Text style={styles.question2}>
-            확인하기가 안 눌려서 당황스러웠죠? {"\n"}
-            이런 서비스를 만들 수 있도록 노력 중입니다.{"\n"}
+            안녕하세요 Team FU:RE입니다! {"\n"}
+            설문해주신 서비스를 제작 중입니다.{"\n"}
             이메일을 입력해주시면{"\n"} 저희 서비스에 대한 소식을 전해드릴게요!
           </Text>
         </View>
@@ -89,6 +89,10 @@ export default class Intro extends Component {
               <Text style={styles.signin}>동의 및 제출</Text>
             </View>
           </TouchableOpacity>
+          <Image
+            source={require("../images/logo.png")}
+            style={styles.logo}
+          ></Image>
         </View>
       </LinearGradient>
     );
@@ -117,9 +121,8 @@ const styles = StyleSheet.create({
 
   question2: {
     textAlign: "center",
-    fontSize: RFValue(25, 812),
+    fontSize: RFValue(20, 812),
     fontWeight: "bold",
-    lineHeight: 35,
   },
   answer: {
     textAlign: "center",
@@ -133,7 +136,7 @@ const styles = StyleSheet.create({
   question: {
     textAlignVertical: "center",
     textAlign: "center",
-    fontSize: RFValue(20, 812),
+    fontSize: RFValue(16, 812),
     fontWeight: "bold",
   },
 
@@ -142,17 +145,16 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     width: RFValue(200, 812),
     marginHorizontal: RFValue(20, 812),
-    fontSize: RFValue(20, 812),
+    fontSize: RFValue(16, 812),
     textAlign: "center",
   },
 
   //Inner Layer 1
   logo: {
     alignSelf: "center",
-    height: 200,
-    width: 300,
+    height: 90,
+    width: 160,
     resizeMode: "center",
-    aspectRatio: 1,
   },
   explanation: {
     fontSize: RFValue(22, 812),

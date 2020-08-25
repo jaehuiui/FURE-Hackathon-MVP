@@ -128,6 +128,7 @@ export default class Third extends Component {
             ></TextInput>
           </View>
         </View>
+
         <View style={styles.bottom_layer_1}>
           <TouchableOpacity
             onPress={() => {
@@ -156,6 +157,8 @@ const styles = StyleSheet.create({
   middle_layer_1: {
     flex: 2,
     justifyContent: "center",
+    marginBottom: 15,
+    paddingVertical: 10,
   },
   bottom_layer_1: {
     flex: 3,
@@ -164,6 +167,7 @@ const styles = StyleSheet.create({
   },
 
   question2: {
+    marginTop: 30,
     textAlign: "center",
     fontSize: RFValue(25, 812),
     fontWeight: "bold",
@@ -227,7 +231,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 50,
     alignSelf: "center",
-    marginTop: 80,
+    marginTop: 100,
     marginHorizontal: 40,
     marginBottom: 30,
     borderRadius: 25,

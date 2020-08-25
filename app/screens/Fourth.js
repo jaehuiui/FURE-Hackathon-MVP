@@ -229,7 +229,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: RFValue(25, 812),
     fontWeight: "bold",
-    lineHeight: 35,
   },
   answer: {
     textAlign: "center",
